@@ -6,6 +6,6 @@ namespace AuthService_WebAPI.Models.DTOs
     {
        [Required][MaxLength(100)] public string Username { get; set; } = string.Empty;
        [Required][MaxLength(100)] public string Password { get; set; } = string.Empty;
-       [Required][MaxLength(100)] public string Role { get; set; } = "User";
+       [Required][MaxLength(100)] public string Role { get; set; } = "Admin";
     }
 }
