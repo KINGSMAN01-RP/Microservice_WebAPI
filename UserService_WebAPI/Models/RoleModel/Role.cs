@@ -4,7 +4,7 @@
     {
         public int ID { get; set; }
         public string RoleName { get; set; } = string.Empty;
-        public string RoleDescription { get; set; }
+        public string? RoleDescription { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; } = string.Empty;
         public DateTime UpdatedAt { get; set; }
