@@ -1,0 +1,35 @@
+name: CI - All Microservices (.NET 8)
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - qa
+      - main
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1️⃣ Checkout repository
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2️⃣ Setup .NET 8 SDK
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    # 3️⃣ Restore dependencies for solution
+    - name: Restore solution
+      run: dotnet restore MySolution.sln
+
+    # 4️⃣ Build all services + gateway
+    - name: Build solution
+      run: dotnet build MySolution.sln --configuration Release --no-restore
+
+    # 5️⃣ Run all tests
+    - name: Run tests
+      run: dotnet test MySolution.sln --no-build --configuration Release
