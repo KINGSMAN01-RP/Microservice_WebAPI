@@ -24,12 +24,12 @@ jobs:
 
     # 3️⃣ Restore dependencies for solution
     - name: Restore solution
-      run: dotnet restore MySolution.sln
+      run: dotnet restore Microservice_WebAPI.sln
 
     # 4️⃣ Build all services + gateway
     - name: Build solution
-      run: dotnet build MySolution.sln --configuration Release --no-restore
+      run: dotnet build Microservice_WebAPI.sln --configuration Release --no-restore
 
     # 5️⃣ Run all tests
     - name: Run tests
-      run: dotnet test MySolution.sln --no-build --configuration Release
+      run: dotnet test Microservice_WebAPI.sln --no-build --configuration Release
