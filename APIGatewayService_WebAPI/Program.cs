@@ -7,6 +7,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+// Add HealthChecks UI
+builder.Services.AddHealthChecksUI()
+    .AddInMemoryStorage();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,5 +27,13 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+// Map HealthChecks UI dashboard
+app.MapHealthChecksUI(options =>
+{
+    options.UIPath = "/health-ui"; // Dashboard URL
+});
+
 
 app.Run();
